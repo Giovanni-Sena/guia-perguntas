@@ -8,6 +8,10 @@ app.get("/",(req,res)=>{
     res.render("index");
 });
 
+app.get("/perguntas",(req,res)=>{
+    res.render("perguntas");
+});
+
 app.listen(3000,()=>{
     console.log("Servidor executando.");
 });
