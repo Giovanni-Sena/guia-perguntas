@@ -1,3 +1,15 @@
 body{
     background-color: #e6e6e6;
 }
+
+.home_img{
+    margin-left:5%;
+    max-height:20%;
+    max-width:20%;
+    height:8%;
+    width:8%;
+}
+
+#form-pergunta{
+    margin-top: 5%;
+}
