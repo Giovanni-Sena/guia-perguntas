@@ -12,6 +12,10 @@ app.get("/perguntas",(req,res)=>{
     res.render("perguntas");
 });
 
+app.post("/salvarpergunta",(req,res)=>{
+    res.send("Teste de recebimento do formulario via rota")
+})
+
 app.listen(3000,()=>{
     console.log("Servidor executando.");
 });
