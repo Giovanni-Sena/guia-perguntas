@@ -1,11 +1,26 @@
 const express = require("express");
 const app = express();
+
+// Conexão com o banco de dados
+const connection = require("./database/database");
+
+connection
+    .authenticate()
+    .then(() =>{
+        console.log("Conexão realizada com o banco de dados.")
+    })
+    .catch((msgError) =>{
+        console.log(msgError);
+    })
+
 // Configurando no Express o EJS como view engine.
 app.set('view engine','ejs');
 app.use(express.static('public'));
+
 // Utilizando o Body Parser já incluido no express
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+
 // Configurando as rotas
 app.get("/",(req,res)=>{
     res.render("index");
