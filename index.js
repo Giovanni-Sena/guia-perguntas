@@ -12,6 +12,8 @@ connection
     .catch((msgError) =>{
         console.log(msgError);
     })
+// Models 
+const perguntaModel = require("./model/Perguntas");
 
 // Configurando no Express o EJS como view engine.
 app.set('view engine','ejs');
