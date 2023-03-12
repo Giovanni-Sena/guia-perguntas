@@ -26,7 +26,9 @@ app.use(express.json());
 // Configurando as rotas
 app.get("/",(req,res)=>{
     // Selecionando todos os dados salvos na tabele com o raw: true não carregando dados adicionais
-    modPergunta.findAll({raw: true}).then(perguntas =>{
+    modPergunta.findAll({raw: true, order:[
+        ['id','DESC'] // ASC = Crescente | DESC = Decrescente
+    ]}).then(perguntas =>{
         res.render("index",{ // Incluindo os dados do retorno para uma variavel para uso na index.ejs
             perguntas: perguntas
         });
