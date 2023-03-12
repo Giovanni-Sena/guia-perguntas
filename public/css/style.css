@@ -3,13 +3,16 @@ body{
 }
 
 .home_img{
-    margin-left:5%;
-    max-height:10%;
-    max-width:10%;
-    height:8%;
-    width:8%;
+    margin-left:1vh;
+    max-height:13vh;
+    max-width:13vh;
+    height:6vh;
 }
 
 #form-pergunta{
     margin-top: 5%;
+}
+
+#home-pergunta{
+    margin-top: 1%;
 }

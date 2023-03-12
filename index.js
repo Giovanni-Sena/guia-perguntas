@@ -13,7 +13,7 @@ connection
         console.log(msgError);
     })
 // Models 
-const perguntaModel = require("./model/Perguntas");
+const modPergunta = require("./model/Perguntas");
 
 // Configurando no Express o EJS como view engine.
 app.set('view engine','ejs');
@@ -25,7 +25,12 @@ app.use(express.json());
 
 // Configurando as rotas
 app.get("/",(req,res)=>{
-    res.render("index");
+    // Selecionando todos os dados salvos na tabele com o raw: true não carregando dados adicionais
+    modPergunta.findAll({raw: true}).then(perguntas =>{
+        res.render("index",{ // Incluindo os dados do retorno para uma variavel para uso na index.ejs
+            perguntas: perguntas
+        });
+    })
 });
 
 app.get("/perguntas",(req,res)=>{
@@ -35,8 +40,13 @@ app.get("/perguntas",(req,res)=>{
 app.post("/salvarpergunta",(req,res)=>{
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    res.send("Teste Título: " + titulo + " " + "Descrição: " + descricao);
-})
+    modPergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() =>{
+        res.redirect("/");
+    });
+});
 
 app.listen(3000,()=>{
     console.log("Servidor executando.");
