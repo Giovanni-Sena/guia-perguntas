@@ -50,6 +50,23 @@ app.post("/salvarpergunta",(req,res)=>{
     });
 });
 
+app.get("/pergunta/:id",(req,res) =>{
+    var id = req.params.id;
+    modPergunta.findOne({
+        where:{
+            id:id
+        }
+    }).then(pergunta =>{
+        if(pergunta != undefined){ //Pergunta localizada
+            res.render("pergunta",{
+                pergunta: pergunta
+            });
+        }else{ // Pergunta não localizada
+            res.redirect("/");
+        }
+    });
+});
+
 app.listen(3000,()=>{
     console.log("Servidor executando.");
 });
