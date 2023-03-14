@@ -14,6 +14,7 @@ connection
     })
 // Models 
 const modPergunta = require("./model/Perguntas");
+const modResposta = require("./model/Resposta");
 
 // Configurando no Express o EJS como view engine.
 app.set('view engine','ejs');
