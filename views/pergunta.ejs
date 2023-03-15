@@ -1,9 +1,15 @@
 <%- include('partials/header') %>
 <body>
     <%- include('partials/navbar') %>
-    <div class="container">
+    <div class="container" id="form-pergunta">
         <h1><%= pergunta.titulo %></h1>
         <p><%= pergunta.descricao %></p>
+        <hr>
+        <form method="POST" action="/salvaresposta/<%= pergunta.id %>">
+            <h3>Resposta:</h3>
+            <textarea placeholder="Digite sua resposta para a pergunta" class="form-control" name="descricaoresposta"></textarea>
+            <button type="submit" class="btn btn-primary" id="form-resposta">Responder</button>
+        </form>
     </div>
 </body>
 <%- include('partials/footer') %>

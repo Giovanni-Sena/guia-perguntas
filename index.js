@@ -68,6 +68,17 @@ app.get("/pergunta/:id",(req,res) =>{
     });
 });
 
+app.post('/salvaresposta/:id',(req,res) =>{
+    var descricaores = req.body.descricaoresposta;
+    var perguntaId = req.params.id;
+    modResposta.create({
+        descricaoresposta: descricaores,
+        idpergunta: perguntaId
+    }).then(() =>{
+        res.redirect("/pergunta/"+perguntaId);
+    });
+});
+
 app.listen(3000,()=>{
     console.log("Servidor executando.");
 });
