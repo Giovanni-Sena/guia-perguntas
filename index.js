@@ -63,7 +63,10 @@ app.get("/pergunta/:id",(req,res) =>{
             Resposta.findAll({
                 where: {
                     idpergunta: pergunta.id
-                }
+                },
+                order:[
+                    ['id','DESC']
+                ]
             }).then(respostas =>{
                 res.render("pergunta",{
                     pergunta: pergunta,
