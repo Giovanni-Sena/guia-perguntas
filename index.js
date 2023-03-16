@@ -14,6 +14,7 @@ connection
     })
 // Models 
 const modPergunta = require("./model/Perguntas");
+const Resposta = require("./model/Resposta");
 const modResposta = require("./model/Resposta");
 
 // Configurando no Express o EJS como view engine.
@@ -59,8 +60,15 @@ app.get("/pergunta/:id",(req,res) =>{
         }
     }).then(pergunta =>{
         if(pergunta != undefined){ //Pergunta localizada
-            res.render("pergunta",{
-                pergunta: pergunta
+            Resposta.findAll({
+                where: {
+                    idpergunta: pergunta.id
+                }
+            }).then(respostas =>{
+                res.render("pergunta",{
+                    pergunta: pergunta,
+                    respostas: respostas
+                });
             });
         }else{ // Pergunta não localizada
             res.redirect("/");

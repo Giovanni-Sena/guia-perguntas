@@ -10,6 +10,17 @@
             <textarea placeholder="Digite sua resposta para a pergunta" class="form-control" name="descricaoresposta"></textarea>
             <button type="submit" class="btn btn-primary" id="form-resposta">Responder</button>
         </form>
+        <br>
+        <h3>Respostas</h3>
+        <hr>
+        <% respostas.forEach(respostas => { %>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <p><%= respostas.descricaoresposta %></p>
+            </div>  
+        </div>   
+        <% }) %>
     </div>
 </body>
 <%- include('partials/footer') %>
